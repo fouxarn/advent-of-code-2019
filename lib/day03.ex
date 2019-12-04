@@ -28,6 +28,32 @@ defmodule Day03 do
       Enum.reduce(wire2, [%{:x => 0, :y => 0}], fn direction, acc ->
         acc ++ calcPath(List.last(acc), direction)
       end)
-    ) |> tl |> Enum.map(&manhattanLength(&1)) |> Enum.min
+    )
+    |> tl
+    |> Enum.map(&manhattanLength(&1))
+    |> Enum.min()
+  end
+
+  def steps(point, wire1, wire2) do
+    (Enum.find_index(wire1, fn x -> x == point end) +
+       Enum.find_index(wire2, fn x -> x == point end))
+    |> IO.inspect()
+  end
+
+  def part2(wire1, wire2) do
+    path1 =
+      Enum.reduce(wire1, [%{:x => 0, :y => 0}], fn direction, acc ->
+        acc ++ calcPath(List.last(acc), direction)
+      end)
+
+    path2 =
+      Enum.reduce(wire2, [%{:x => 0, :y => 0}], fn direction, acc ->
+        acc ++ calcPath(List.last(acc), direction)
+      end)
+
+    intersect(path1, path2)
+    |> tl
+    |> Enum.map(&steps(&1, path1, path2))
+    |> Enum.min()
   end
 end
