@@ -1,6 +1,7 @@
 defmodule Day03Test do
   use ExUnit.Case
 
+  @tag :skip
   test "part1" do
     assert Day03.part1(["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"], [
              "U62",
@@ -22,6 +23,7 @@ defmodule Day03Test do
     assert Day03.part1(String.split(wire1, ","), String.split(wire2, ",")) == 1431
   end
 
+  @tag :skip
   test "part2" do
     assert Day03.part2(["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"], [
              "U62",

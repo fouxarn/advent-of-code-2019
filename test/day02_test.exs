@@ -1,6 +1,7 @@
 defmodule Day02Test do
   use ExUnit.Case
 
+  @tag :skip
   test "part1" do
     assert Day02.part1([1, 0, 0, 0, 99]) == [2, 0, 0, 0, 99]
     assert Day02.part1([2, 3, 0, 3, 99]) == [2, 3, 0, 6, 99]
@@ -17,6 +18,7 @@ defmodule Day02Test do
     assert Enum.at(Day02.part1(modules), 0) === 3_101_878
   end
 
+  @tag :skip
   test "part2" do
     modules = File.read!("lib/day02input") |> String.split(",") |> Enum.map(&String.to_integer/1)
     [19_690_720, noun, verb | _] = Day02.part2(modules, 19_690_720)
